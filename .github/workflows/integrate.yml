@@ -36,4 +36,24 @@ jobs:
       - uses: holepunchto/actions/bare-base@v1
       - run: sudo apt update && sudo apt install -y libgtk-4-1 libwebkitgtk-6.0-4
         if: ${{ matrix.platform == 'linux' }}
+      - run: |
+          $arch = @{ X64 = 'x64'; ARM64 = 'arm64' }[$env:ARCH]
+
+          if ($null -eq $arch) {
+            Write-Error "Unsupported architecture '$env:ARCH'"
+            exit 1
+          }
+
+          $installer = Join-Path $env:RUNNER_TEMP "windowsappruntimeinstall-$arch.exe"
+
+          Invoke-WebRequest -Uri "https://aka.ms/windowsappsdk/$env:VERSION/latest/windowsappruntimeinstall-$arch.exe" -OutFile $installer
+
+          & $installer --quiet
+
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+        if: ${{ matrix.platform == 'win32' }}
+        shell: pwsh
+        env:
+          VERSION: '1.8'
+          ARCH: ${{ runner.arch }}
       - run: npm test
