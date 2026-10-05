@@ -34,6 +34,6 @@ jobs:
     name: Test / ${{ matrix.platform }}
     steps:
       - uses: holepunchto/actions/bare-base@v1
-      - run: sudo apt update && sudo apt install -y libgtk-4-1
+      - run: sudo apt update && sudo apt install -y libgtk-4-1 libwebkitgtk-6.0-4
         if: ${{ matrix.platform == 'linux' }}
       - run: npm test
