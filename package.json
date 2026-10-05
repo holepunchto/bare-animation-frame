@@ -1,0 +1,67 @@
+{
+  "name": "bare-animation-frame",
+  "version": "0.0.0",
+  "description": "The HTML animation frame API for native apps built with Bare",
+  "exports": {
+    "./package": "./package.json",
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "imports": {
+    "#clock": {
+      "darwin": "./lib/darwin.js",
+      "ios": "./lib/ios.js",
+      "linux": "./lib/linux.js",
+      "win32": "./lib/win32.js",
+      "android": "./lib/android.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "lib"
+  ],
+  "scripts": {
+    "format": "prettier --write . && lunte --fix",
+    "lint": "prettier --check . && lunte",
+    "test": "bare-native-test test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holepunchto/bare-animation-frame.git"
+  },
+  "author": "Holepunch",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/holepunchto/bare-animation-frame/issues"
+  },
+  "homepage": "https://github.com/holepunchto/bare-animation-frame#readme",
+  "dependencies": {
+    "bare-app-kit": "^0.3.0",
+    "bare-core-animation": "^0.1.1",
+    "bare-foundation": "^0.1.0",
+    "bare-gtk": "^0.3.2",
+    "bare-hrtime": "^2.1.2",
+    "bare-ndk": "^0.3.1",
+    "bare-win-ui": "^0.3.2"
+  },
+  "peerDependencies": {
+    "bare-abort-controller": "*"
+  },
+  "peerDependenciesMeta": {
+    "bare-abort-controller": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "bare-abort-controller": "^1.0.0",
+    "bare-native": "^0.3.2",
+    "bare-native-test": "^0.1.0",
+    "bare-tap": "^1.1.0",
+    "lunte": "^1.8.0",
+    "prettier": "^3.4.1",
+    "prettier-config-holepunch": "^2.0.0"
+  }
+}
