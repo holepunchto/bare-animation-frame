@@ -35,5 +35,5 @@ jobs:
     steps:
       - uses: holepunchto/actions/bare-base@v1
       - run: sudo apt update && sudo apt install -y libgtk-4-1
-        if: matrix.platform == 'linux'
+        if: ${{ matrix.platform == 'linux' }}
       - run: npm test
