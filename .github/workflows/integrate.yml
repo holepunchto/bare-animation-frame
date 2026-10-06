@@ -35,5 +35,7 @@ jobs:
     steps:
       - uses: holepunchto/actions/bare-base@v1
       - uses: holepunchto/actions/setup-gtk@755e2a7eb5fe7ea7d9bd102b79fe28fd228fd52d
+        with:
+          webkit: true
       - uses: holepunchto/actions/setup-windows-app-runtime@a6b6708659489fa80ebb47b7d7b5d6fe14a80364
       - run: npm test
